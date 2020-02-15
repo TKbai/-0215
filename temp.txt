@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>权威数据</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="__CSS__/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-3 ">
+					<caption class="text-center"><h3>权威数据</h3></caption>
+					<div class="table-box"></div>
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>数据标题</th>
+							<th>网址</th>
+							<th>时间</th>
+							<th>操作</th>
+						</tr>
+						{volist name="datas" id="data"}
+						<tr>
+							<td>{$data.data_title}</td>
+							<td>{$data.data_web}</td>
+							<td>{$data.data_date}</td>
+							<td>
+								<a href="{:url('edit', ['data_id'=>$data.data_id])}">修改</a>
+								<a href="{:url('delete',['data_id'=>$data.data_id])}" onclick="return confirm('确定要删除吗？')">删除</a>
+							</td>
+						</tr>
+						{/volist}
+						<tr>
+							<td colspan="5" class="text-right">
+								<a href="{:url('index/index/add')}">添加</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-offset-3 col-md-6 column">
+				{$datas->render()}
+			</div>
+
+		</div>
+		</div>
+	</body>
+
+</html>
